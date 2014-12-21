@@ -6,9 +6,8 @@ import java.awt.event.KeyListener;
 /**
  * <p>Description: </p>
  * <p>Copyright: (C) 2004-2014 ЗАО "КУБ"</p>
- *
  * @author Белолипов М.И.
- * @version 1.6.5
+ * @version 0.0.1
  */
 public class MainKeyListener implements KeyListener {
     private static final int RAISE = 65;       // поднять, "a"

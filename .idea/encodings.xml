@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/GitGovno.txt" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/ru/dtnm/PlatformController/PlatformControllerStarter.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/ru/dtnm/PlatformController/frames/config/Config.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/ru/dtnm/PlatformController/frames/config/SettingsTransport.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/ru/dtnm/PlatformController/frames/login/LoginFrame.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/ru/dtnm/PlatformController/frames/main/MainFrameListener.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/src/ru/dtnm/PlatformController/frames/main/MainKeyListener.java" charset="windows-1251" />
   </component>
 </project>
