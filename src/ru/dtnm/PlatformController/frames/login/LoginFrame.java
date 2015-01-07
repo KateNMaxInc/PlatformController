@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -25,9 +26,9 @@ public class LoginFrame extends JFrame {
 
     public static final String caption = "Login:";
 
-    private LoginFrame(){
+    private LoginFrame() {
         super(caption);
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
@@ -44,6 +45,28 @@ public class LoginFrame extends JFrame {
         JLabel namesLabel = new JLabel("Выберите порт");
         namesLabel.setBounds(20,20,150,20);
         panel.add(namesLabel);
+
+        // Уточним, лежат ли файлы rxtxParallel.dll и rxtxSerial.dll в JRE_HOME/bin/
+        String javaHomeDir = System.getenv("JAVA_HOME");
+        String jreDir = javaHomeDir + "\\jre\\bin";
+        File parallelDllTo = new File(jreDir + "\\rxtxParallel.dll");
+        File serialDllTo = new File(jreDir + "\\rxtxSerial.dll");
+
+        if (parallelDllTo.exists()) System.out.println("Parallel dll file exists");
+        else {
+            System.out.println("Parallel .dll file doesn't exists: " + jreDir + "\\rxtxParallel.dll");
+            System.out.println("Copying it.");
+
+            //<!TODO> А теперь надо просто скопировать файл из джарника в нужное место
+        }
+
+        if (serialDllTo.exists()) System.out.println("Serial dll file exists");
+        else {
+            System.out.println("Serial .dll file doesn't exist: " + jreDir + "\\rxtxSerial.dll");
+            System.out.println("Copying it.");
+
+            //<!TODO> А теперь надо просто скопировать файл из джарника в нужное место
+        }
 
         // Определим все доступные порты
         Enumeration portsList = CommPortIdentifier.getPortIdentifiers();
@@ -114,8 +137,14 @@ public class LoginFrame extends JFrame {
     }
 
     public static JFrame getInstance () {
-        if (instance == null) instance = new LoginFrame();
-        return instance;
+        if (instance == null) try {
+            instance = new LoginFrame();
+            return instance;
+        }
+        catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
 
     /*
